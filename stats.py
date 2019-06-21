@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Copyright (c) 2019
 # Author: Mike Paxton
 #
@@ -21,16 +22,14 @@
 
 from Adafruit_IO import Client
 from ConfigParser import SafeConfigParser
-import datetime
-import os
 import subprocess
 import time
 
-
+# Uses ConfigParser to grab Adafruit IO user name and key from config file.
 config = SafeConfigParser()
 config.read('aio.cfg')
-ADAFRUIT_IO_USERNAME = config.get('aio', 'user')  # Import Adafruit aio user
-ADAFRUIT_IO_KEY = config.get('aio', 'key')  # Import Adafruit aio Key
+ADAFRUIT_IO_USERNAME = config.get('aio', 'user')
+ADAFRUIT_IO_KEY = config.get('aio', 'key')
 
 
 # Create an instance of the REST client.
@@ -56,4 +55,4 @@ while True:
     aio.send_data('disk2', Disk2)
     aio.send_data('memUsage', Mem)
 
-    time.sleep(60)
+    time.sleep(30)
