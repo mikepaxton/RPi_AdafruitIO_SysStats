@@ -37,6 +37,8 @@ aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 
 while True:
 
+    print (ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
+
     cmd = "top -bn1 | grep load | awk '{printf \"%.2f\", $(NF-2)}'"
     CPU = subprocess.check_output(cmd, shell=True)
     cmd = "free -m | awk 'NR==2{printf \"%d\", $3}'"
@@ -54,4 +56,4 @@ while True:
     aio.send_data('disk2', Disk2)
     aio.send_data('memUsage', Mem)
 
-    time.sleep(30)
+    time.sleep(5)
