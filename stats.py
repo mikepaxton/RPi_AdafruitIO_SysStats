@@ -37,9 +37,6 @@ aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 
 while True:
 
-    print (ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
-    print(aio)
-
     cmd = "top -bn1 | grep load | awk '{printf \"%.2f\", $(NF-2)}'"
     CPU = subprocess.check_output(cmd, shell=True)
     cmd = "free -m | awk 'NR==2{printf \"%d\", $3}'"
@@ -51,12 +48,10 @@ while True:
     cmd = "vcgencmd measure_temp | cut -d '=' -f 2 | head --bytes -3"
     Temp = subprocess.check_output(cmd, shell=True)
 
-    print(CPU, Temp, Disk1, Disk2, Mem)
-
     aio.send_data('mediadownloader.cpuload', CPU)
-    aio.send_data('cpuTemp', Temp)
-    aio.send_data('disk1', Disk1)
-    aio.send_data('disk2', Disk2)
-    aio.send_data('memUsage', Mem)
+    aio.send_data('mediadownloader.cpuTemp', Temp)
+    aio.send_data('mediadownloader.disk1', Disk1)
+    aio.send_data('mediadownloader.disk2', Disk2)
+    aio.send_data('mediadownloader.memUsage', Mem)
 
     time.sleep(5)
