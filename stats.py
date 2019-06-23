@@ -52,7 +52,7 @@ while True:
 
     print(CPU, Temp, Disk1, Disk2, Mem)
 
-    aio.send_data('cpuLoad', CPU)
+    aio.send_data('cpuLoad', '{:.2f}'.format(CPU))
     aio.send_data('cpuTemp', Temp)
     aio.send_data('disk1', Disk1)
     aio.send_data('disk2', Disk2)
