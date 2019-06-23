@@ -49,9 +49,9 @@ while True:
     Temp = subprocess.check_output(cmd, shell=True)
 
     aio.send_data('mediadownloader.cpuload', CPU)
-    aio.send_data('mediadownloader.cpuTemp', Temp)
+    aio.send_data('mediadownloader.cputemp', Temp)
     aio.send_data('mediadownloader.disk1', Disk1)
     aio.send_data('mediadownloader.disk2', Disk2)
-    aio.send_data('mediadownloader.memUsage', Mem)
+    aio.send_data('mediadownloader.memusage', Mem)
 
     time.sleep(5)
