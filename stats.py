@@ -50,6 +50,8 @@ while True:
     cmd = "vcgencmd measure_temp | cut -d '=' -f 2 | head --bytes -3"
     Temp = subprocess.check_output(cmd, shell=True)
 
+    print(CPU, Temp, Disk1, Disk2, Mem)
+
     aio.send_data('cpuLoad', CPU)
     aio.send_data('cpuTemp', Temp)
     aio.send_data('disk1', Disk1)
