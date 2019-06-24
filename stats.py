@@ -35,6 +35,7 @@ config.read('/home/pi/projects/RPi_AdafruitIO_SysStats/aio.cfg')
 ADAFRUIT_IO_USERNAME = config.get('aio', 'user')
 ADAFRUIT_IO_KEY = config.get('aio', 'key')
 dashboard = config.get('aio', 'dashboard')
+sleep = config.get('aio', 'sleep')
 
 # Create an instance of the REST client.
 aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
@@ -67,4 +68,4 @@ while True:
         aio.send_data('mediadownloader.disk2', Disk2)
     aio.send_data('mediadownloader.memusage', Mem)
 
-    time.sleep(config.get('default', float('sleep')))
+    time.sleep(float(sleep))
