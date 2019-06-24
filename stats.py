@@ -26,7 +26,7 @@ import time
 
 # Uses ConfigParser to grab Adafruit IO user name and key from config file.
 config = SafeConfigParser()
-config.read('aio.cfg')
+config.read('/home/pi/projects/RPi_AdafruitIO_SysStats/aio.cfg')
 ADAFRUIT_IO_USERNAME = config.get('aio', 'user')
 ADAFRUIT_IO_KEY = config.get('aio', 'key')
 
