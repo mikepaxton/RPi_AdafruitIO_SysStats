@@ -60,7 +60,7 @@ while True:
     # Each Feed must use the Feed Key not just the name of the Feed.
     # The Feed Key is in the format of dashboard.feedname
     # aio.send_data('mediadownloader.cpuload', CPU)
-    aio.send_data(dashboard + str('.') + str('cpuload'))
+    aio.send_data(dashboard + str('.') + str('cpuload'), CPU)
     aio.send_data('mediadownloader.cputemp', Temp)
     aio.send_data('mediadownloader.disk1', Disk1)
     if os.path.exists("/dev/sda1"):
