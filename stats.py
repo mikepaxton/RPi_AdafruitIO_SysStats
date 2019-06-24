@@ -29,7 +29,7 @@ import subprocess
 import time
 import os
 
-# Uses ConfigParser to grab Adafruit IO user name and key from config file.
+# Uses ConfigParser to grab parameters from file
 config = SafeConfigParser()
 config.read('/home/pi/projects/RPi_AdafruitIO_SysStats/aio.cfg')
 ADAFRUIT_IO_USERNAME = config.get('aio', 'user')
@@ -58,14 +58,14 @@ while True:
     cmd = "free -m | awk 'NR==2{printf \"%d\", $3}'"
     Mem = subprocess.check_output(cmd, shell=True)
 
+    # send_data grabs dashboard from config file then combines all of it into a string.
     # Each Feed must use the Feed Key not just the name of the Feed.
     # The Feed Key is in the format of dashboard.feedname
-    # aio.send_data('mediadownloader.cpuload', CPU)
     aio.send_data(dashboard + str('.') + str('cpuload'), CPU)
-    aio.send_data('mediadownloader.cputemp', Temp)
-    aio.send_data('mediadownloader.disk1', Disk1)
+    aio.send_data(dashboard + str('.') + str('cputemp'), Temp)
+    aio.send_data(dashboard + str('.') + str('disk1'), Disk1)
     if os.path.exists("/dev/sda1"):
-        aio.send_data('mediadownloader.disk2', Disk2)
-    aio.send_data('mediadownloader.memusage', Mem)
+        aio.send_data(dashboard + str('.') + str('disk2'), Disk2)
+    aio.send_data(dashboard + str('.') + str('memusage'), Mem)
 
     time.sleep(float(sleep))
