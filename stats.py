@@ -67,4 +67,4 @@ while True:
         aio.send_data('mediadownloader.disk2', Disk2)
     aio.send_data('mediadownloader.memusage', Mem)
 
-    time.sleep(config.get('default', 'sleep'))
+    time.sleep(config.get('default', float('sleep')))
