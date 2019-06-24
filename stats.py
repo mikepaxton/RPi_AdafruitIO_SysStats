@@ -35,7 +35,7 @@ config.read('/home/pi/projects/RPi_AdafruitIO_SysStats/aio.cfg')
 ADAFRUIT_IO_USERNAME = config.get('aio', 'user')
 ADAFRUIT_IO_KEY = config.get('aio', 'key')
 dashboard = config.get('aio', 'dashboard')
-sleep = config.get('aio', 'sleep')
+sleep = config.get('default', 'sleep')
 
 # Create an instance of the REST client.
 aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
